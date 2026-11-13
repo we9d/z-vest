@@ -1,0 +1,70 @@
+/* ==========================================================================
+   FINVEST Mobile Investment App - Stylesheet
+   ========================================================================== */
+
+/* Base & Typography */
+html {
+  height: 100%;
+}
+
+body {
+  background-color: #F4F7FA;
+  font-family: 'Inter', 'IBM Plex Sans Thai', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Screen Transitions */
+.screen-view {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.18s ease-in-out;
+}
+
+.screen-view.active {
+  display: flex;
+  opacity: 1;
+}
+
+/* Scrollbar Utilities */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Interactive Feedback */
+.tap-active {
+  transition: transform 0.1s ease-in-out, opacity 0.1s ease-in-out;
+}
+
+.tap-active:active {
+  transform: scale(0.97);
+}
+
+/* Pulse & Status Animations */
+@keyframes pulse-subtle {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}

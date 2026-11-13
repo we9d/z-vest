@@ -1,0 +1,125 @@
+﻿<section id="screen-simulator-setup" class="screen-view flex-col h-full bg-brand-bg text-slate-800">
+        <div class="px-5 bg-white border-b border-slate-200 flex items-center justify-between pt-4 pb-3.5"><div class="relative w-full flex items-center justify-between"><button onclick="navTo('screen-home')" class="w-9 h-9 -ml-1 text-slate-600 rounded-xl hover:bg-slate-100 flex items-center justify-center tap-active transition z-10" aria-label="ย้อนกลับ"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg></button><div class="absolute inset-0 flex items-center justify-center pointer-events-none"><h2 class="text-sm font-bold text-brand-navy pointer-events-auto text-center">การจำลองการลงทุน</h2></div><div class="w-9 h-9"></div></div></div>
+
+        <div class="flex-1 overflow-y-auto p-5 space-y-4 pb-28"><!-- SIMULATION OVERVIEW HERO CARD -->
+<div class="p-5 rounded-3xl bg-gradient-to-br from-[#102A43] via-[#176B87] to-brand-teal text-white shadow-xl relative overflow-hidden">
+  <div class="flex justify-between items-center mb-2">
+    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-white/20 text-white backdrop-blur flex items-center space-x-1.5">
+      <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span class="">โหมดจำลองการลงทุน</span>
+    </span>
+    <span class="text-[10px] text-teal-100 font-medium">ไร้ความเสี่ยง 100%</span>
+  </div>
+
+  <div class="mt-2">
+    <span class="text-xs text-teal-100 font-medium block">มูลค่าพอร์ตจำลอง</span>
+    <div class="flex items-baseline space-x-1 mt-0.5">
+      <span class="text-sm font-semibold text-teal-200 font-num">฿</span>
+      <span id="sim-dash-total" class="text-3xl font-extrabold tracking-tight font-num">54,320.00</span>
+    </div>
+    <div class="flex items-center space-x-2 mt-1.5 text-xs">
+      <span id="sim-dash-pnl" class="text-emerald-300 font-bold font-num text-sm">▲ +฿4,320.00 (+8.64%)</span>
+      <span class="text-teal-100 text-[10px]">กำไรจำลองรวม</span>
+    </div>
+  </div>
+
+  <!-- Sub-balances Grid inside Card -->
+  <div class="mt-4 pt-3.5 border-t border-white/20 grid grid-cols-2 gap-2 text-xs">
+    <div class="p-2.5 rounded-xl bg-white/10 backdrop-blur">
+      <span class="text-[10px] text-teal-200 block">เงินจำลองคงเหลือ</span>
+      <span id="sim-dash-cash" class="font-bold font-num text-sm text-emerald-300 mt-0.5 block">฿14,320.00</span>
+    </div>
+    <div class="p-2.5 rounded-xl bg-white/10 backdrop-blur">
+      <span class="text-[10px] text-teal-200 block">เงินต้นจำลอง</span>
+      <span id="sim-dash-start" class="font-bold font-num text-sm text-white mt-0.5 block">฿50,000.00</span>
+    </div>
+  </div>
+</div>
+
+<!-- EDITABLE STARTING INVESTMENT SETUP CARD -->
+<div class="p-5 rounded-3xl bg-white border border-slate-200 shadow-sm space-y-3.5">
+  <div>
+    <h3 class="text-sm font-bold text-brand-navy">กำหนดเงินทุนเริ่มต้นจำลอง</h3>
+    <p class="text-xs text-slate-500 mt-0.5">ระบุยอดเงินเสมือนเพื่อเริ่มทดลองวางแผนพอร์ตแบบไร้ความเสี่ยง</p>
+  </div>
+
+  <div>
+    <label class="text-[11px] font-bold text-slate-500 block mb-1.5">จำนวนเงินจำลอง (บาท)</label>
+    <div class="relative flex items-center bg-slate-50 border border-slate-300 rounded-2xl py-2.5 px-4 focus-within:border-brand-teal focus-within:ring-2 focus-within:ring-brand-teal transition">
+      <span class="text-xl font-bold text-slate-400 font-num mr-2 select-none">฿</span>
+      <input type="text" id="sim-custom-amount" value="50,000" oninput="onSimAmountChange(this.value.replace(/[^0-9]/g, ''))" class="w-full bg-transparent font-num font-bold text-2xl tracking-tight text-brand-navy focus:outline-none text-left p-0">
+    </div>
+  </div>
+
+  <!-- Quick Amount Pills -->
+  <div class="grid grid-cols-4 gap-1.5 text-xs font-num">
+    <button onclick="applySimQuickAmt(1000, this)" class="sim-amt-pill py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold transition">฿1,000</button>
+    <button onclick="applySimQuickAmt(5000, this)" class="sim-amt-pill py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold transition">฿5,000</button>
+    <button onclick="applySimQuickAmt(10000, this)" class="sim-amt-pill py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold transition">฿10,000</button>
+    <button onclick="applySimQuickAmt(50000, this)" class="sim-amt-pill py-2 rounded-xl bg-teal-100 text-brand-teal border border-brand-teal/40 font-bold transition">฿50,000</button>
+  </div>
+
+  <button onclick="startSimulation(); openSimSection('trading');" class="tap-active w-full py-3.5 rounded-2xl bg-brand-teal hover:bg-teal-500 text-white font-bold text-sm shadow-md transition flex items-center justify-center space-x-1.5">
+    <span class="">เริ่มจำลองลงทุน</span>
+  </button>
+</div>
+
+<!-- EXACTLY 4 MINIMAL ELEGANT MENU ROWS -->
+<div class="space-y-2 pb-6">
+  <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider px-1 block">จำลองการซื้อขาย</span><button onclick="openSimSection('trading')" class="tap-active w-full p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-center justify-between gap-3 hover:border-brand-teal transition text-left"><div class="flex items-center space-x-3 flex-1 min-w-0 pr-2"><div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-900 flex items-center justify-center shrink-0"><svg class="w-5 h-5 text-slate-900" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path></svg></div><div class="flex-1 min-w-0"><h4 class="text-xs font-bold text-brand-navy">จำลองการซื้อขาย</h4><p class="text-[10px] text-slate-400 mt-0.5 leading-snug">ค้นหาสินทรัพย์ ดูกราฟราคา ส่งคำสั่งซื้อขายด้วยเงินจำลอง</p></div></div><div class="flex items-center space-x-1.5 text-slate-400 shrink-0"><span class="text-[11px] font-bold text-brand-teal font-num">฿14,000</span><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg></div></button>
+
+  <!-- Row 1: ทดลองซื้อขาย (Virtual Trading) -->
+  
+
+  <!-- Row 2: จำลองสถานการณ์เศรษฐกิจ (Macro Scenario) -->
+  <button onclick="navTo('screen-macro-scenario')" class="tap-active w-full p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-center justify-between hover:border-brand-teal transition text-left">
+    <div class="flex items-center space-x-3">
+      <div class="w-10 h-10 rounded-xl bg-blue-50 text-brand-blue flex items-center justify-center shrink-0">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+      </div>
+      <div>
+        <h4 class="text-xs font-bold text-brand-navy">จำลองสถานการณ์เศรษฐกิจ</h4>
+        <p class="text-[10px] text-slate-400 mt-0.5">ทดสอบจำลองพอร์ตใน 4 สภาวะวิกฤต</p>
+      </div>
+    </div>
+    <div class="flex items-center space-x-1.5 text-slate-400">
+      <span class="text-[11px] font-medium text-slate-500">4 สภาวะ</span>
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+    </div>
+  </button>
+
+  <!-- Row 3: AI วิเคราะห์พอร์ต (AI Portfolio Coach) -->
+  <button onclick="navTo('screen-ai-coach')" class="tap-active w-full p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-center justify-between hover:border-brand-teal transition text-left">
+    <div class="flex items-center space-x-3">
+      <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.674M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+      </div>
+      <div>
+        <h4 class="text-xs font-bold text-brand-navy">วิเคราะห์พอร์ตด้วย AI</h4>
+        <p class="text-[10px] text-slate-400 mt-0.5">วิเคราะห์ความเสี่ยง กระจายการลงทุน และแนวทางปรับปรุง</p>
+      </div>
+    </div>
+    <div class="flex items-center space-x-1.5 text-slate-400">
+      <span class="text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">85/100</span>
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+    </div>
+  </button>
+
+  <!-- Row 4: สรุปผลการลงทุน (Investment Summary) -->
+  <button onclick="navTo('screen-sim-summary')" class="tap-active w-full p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-center justify-between hover:border-brand-teal transition text-left">
+    <div class="flex items-center space-x-3">
+      <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center shrink-0">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+      </div>
+      <div>
+        <h4 class="text-xs font-bold text-brand-navy">สรุปผลการลงทุน</h4>
+        <p class="text-[10px] text-slate-400 mt-0.5">ดูผลตอบแทน กำไร/ขาดทุน และผลการดำเนินงานพอร์ต</p>
+      </div>
+    </div>
+    <div class="flex items-center space-x-1.5 text-slate-400">
+      <span class="text-[11px] font-bold text-brand-green font-num">+8.64%</span>
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+    </div>
+  </button>
+</div></div>
+      </section>

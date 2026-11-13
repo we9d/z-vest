@@ -1,0 +1,148 @@
+﻿<section id="screen-real-portfolio" class="screen-view flex-col h-full bg-brand-bg text-slate-800 active">
+        <!-- Header with Back Button -->
+        <div class="relative px-5 pt-3.5 pb-3 bg-white border-b border-slate-200 flex items-center justify-between shadow-xs shrink-0"><button onclick="navTo('screen-home')" class="w-9 h-9 -ml-1 text-slate-600 rounded-xl hover:bg-slate-100 flex items-center justify-center tap-active transition z-10" aria-label="ย้อนกลับ"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg></button><div class="absolute inset-0 flex items-center justify-center pointer-events-none"><h2 class="text-sm font-bold text-brand-navy pointer-events-auto">พอร์ตลงทุนจริง</h2></div><span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-brand-navy border border-blue-200/80 z-10">พอร์ตลงทุนจริง</span></div>
+
+        <div class="flex-1 overflow-y-auto p-5 space-y-4 pb-28">
+          <!-- Main Hero Portfolio Card -->
+          <div class="p-5 rounded-3xl bg-brand-navy text-white shadow-xl relative overflow-hidden">
+            <div class="absolute -right-8 -top-8 w-36 h-36 bg-brand-blue/30 rounded-full blur-2xl"></div>
+            
+            <div class="flex justify-between items-center mb-1">
+              <span class="text-xs font-medium text-slate-300">มูลค่าพอร์ตรวมสุทธิ</span>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-white/10 text-teal-300 border border-white/10">บัญชีใช้งานปกติ</span>
+            </div>
+
+            <div class="flex items-baseline space-x-1">
+              <span class="text-sm font-semibold text-slate-400">฿</span>
+              <span class="text-3xl font-extrabold tracking-tight font-num">582,410.00</span>
+            </div>
+
+            <!-- Profit Loss & Badge -->
+            <div class="flex items-center space-x-2 mt-1.5 text-xs">
+              <span class="text-brand-green font-bold font-num text-sm">▲ +฿38,120.00 (+7.01%)</span>
+              <span class="text-slate-300 text-[10px]">กำไร/ขาดทุนสะสม</span>
+            </div>
+
+            <!-- Key Balance Sub-grid -->
+            <div class="mt-4 pt-3.5 border-t border-white/15 grid grid-cols-2 gap-3 text-xs">
+              <div class="p-2.5 rounded-xl bg-white/5 border border-white/10">
+                <span class="text-[10px] text-slate-300 block">เงินต้นลงทุนสะสม</span>
+                <span class="font-extrabold font-num text-sm text-white mt-0.5 block">฿437,160.00</span>
+              </div>
+              <div class="p-2.5 rounded-xl bg-white/5 border border-white/10">
+                <span class="text-[10px] text-teal-300 block">เงินสดจริงพร้อมลงทุน</span>
+                <span class="font-extrabold font-num text-sm text-teal-300 mt-0.5 block">฿145,250.00</span>
+              </div>
+            </div>
+
+            <!-- Primary Actions Inside Card -->
+            <div class="grid grid-cols-3 gap-2 mt-4 pt-1"><button onclick="openRealPortfolioTrading('SELL')" class="tap-active py-2 px-2 rounded-xl bg-rose-50 hover:bg-brand-red/20 text-rose-600 border border-rose-200 font-bold text-xs flex items-center justify-center space-x-1 shadow-sm transition"><span class="">ขายสินทรัพย์</span></button><button onclick="openRealPortfolioTrading('BUY')" class="tap-active py-2 px-2 rounded-xl bg-brand-teal hover:bg-teal-500 text-white font-bold text-xs flex items-center justify-center space-x-1 shadow-sm"><span class="">+ ซื้อสินทรัพย์</span></button><button onclick="navTo('screen-real-summary')" class="tap-active py-2 px-2 rounded-xl bg-white text-brand-navy hover:bg-slate-100 font-bold text-xs flex items-center justify-center space-x-1 shadow-sm"><span class="">ดูสรุปผล</span></button></div>
+          </div>
+
+          <!-- Asset Allocation Breakdown -->
+          <div class="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs space-y-2.5">
+            <div class="flex justify-between items-center">
+              <h3 class="text-xs font-bold text-brand-navy">สัดส่วนสินทรัพย์พอร์ตจริง</h3>
+              <span class="text-[10px] font-semibold text-slate-400">4 หมวดหมู่</span>
+            </div>
+            
+            <div class="w-full h-3 rounded-full overflow-hidden flex bg-slate-100">
+              <div class="bg-brand-navy h-full" style="width: 45%;" title="US ETFs 45%"></div>
+              <div class="bg-brand-blue h-full" style="width: 25%;" title="SET50 25%"></div>
+              <div class="bg-brand-teal h-full" style="width: 18%;" title="Bonds 18%"></div>
+              <div class="bg-slate-400 h-full" style="width: 12%;" title="Cash 12%"></div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 text-[11px] pt-1">
+              <div class="flex items-center justify-between p-1.5 rounded-lg bg-slate-50">
+                <div class="flex items-center space-x-1.5">
+                  <span class="w-2.5 h-2.5 rounded-full bg-brand-navy"></span>
+                  <span class="text-slate-700">US ETFs</span>
+                </div>
+                <span class="font-bold font-num text-brand-navy">45%</span>
+              </div>
+              <div class="flex items-center justify-between p-1.5 rounded-lg bg-slate-50">
+                <div class="flex items-center space-x-1.5">
+                  <span class="w-2.5 h-2.5 rounded-full bg-brand-blue"></span>
+                  <span class="text-slate-700">หุ้นไทย SET50</span>
+                </div>
+                <span class="font-bold font-num text-brand-navy">25%</span>
+              </div>
+              <div class="flex items-center justify-between p-1.5 rounded-lg bg-slate-50">
+                <div class="flex items-center space-x-1.5">
+                  <span class="w-2.5 h-2.5 rounded-full bg-brand-teal"></span>
+                  <span class="text-slate-700">พันธบัตร</span>
+                </div>
+                <span class="font-bold font-num text-brand-navy">18%</span>
+              </div>
+              <div class="flex items-center justify-between p-1.5 rounded-lg bg-slate-50">
+                <div class="flex items-center space-x-1.5">
+                  <span class="w-2.5 h-2.5 rounded-full bg-slate-400"></span>
+                  <span class="text-slate-700">สภาพคล่อง Cash</span>
+                </div>
+                <span class="font-bold font-num text-brand-navy">12%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Current Real Holdings List -->
+          <div class="space-y-2">
+            <div class="flex justify-between items-center px-1">
+              <h3 class="text-xs font-bold text-brand-muted uppercase tracking-wider">สินทรัพย์ที่ถือครองจริง</h3>
+              <span class="text-[11px] text-brand-teal font-semibold">3 รายการ</span>
+            </div>
+
+            <!-- Holding 1: SPY -->
+            <div onclick="openAssetDetail('SPY', 'SPDR S&amp;P 500 ETF Trust', '฿19,550.00', '+0.75%', 'ปานกลาง (ระดับ 3)', 'US ETF')" class="tap-active p-3.5 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-center justify-between cursor-pointer hover:border-brand-blue">
+              <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-slate-100 text-brand-navy font-black text-xs flex items-center justify-center border border-slate-200">SPY</div>
+                <div>
+                  <h4 class="font-bold text-xs text-brand-navy">SPDR S&amp;P 500 ETF</h4>
+                  <span class="text-[10px] text-slate-400 font-num">12 หน่วย • เฉลี่ย ฿18,200</span>
+                </div>
+              </div>
+              <div class="text-right font-num">
+                <div class="text-xs font-extrabold text-slate-800">฿234,600.00</div>
+                <div class="text-[10px] font-bold text-brand-green">▲ +฿16,200 (+7.4%)</div>
+              </div>
+            </div>
+
+            <!-- Holding 2: AAPL -->
+            <div onclick="openAssetDetail('AAPL', 'Apple Inc.', '฿8,120.00', '+1.15%', 'ปานกลาง (ระดับ 3)', 'US Stock')" class="tap-active p-3.5 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-center justify-between cursor-pointer hover:border-brand-blue">
+              <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-slate-100 text-brand-navy font-black text-xs flex items-center justify-center border border-slate-200">AAPL</div>
+                <div>
+                  <h4 class="font-bold text-xs text-brand-navy">Apple Inc.</h4>
+                  <span class="text-[10px] text-slate-400 font-num">15 หน่วย • เฉลี่ย ฿7,400</span>
+                </div>
+              </div>
+              <div class="text-right font-num">
+                <div class="text-xs font-extrabold text-slate-800">฿121,800.00</div>
+                <div class="text-[10px] font-bold text-brand-green">▲ +฿10,800 (+9.7%)</div>
+              </div>
+            </div>
+
+            <!-- Holding 3: PTT -->
+            <div onclick="openAssetDetail('PTT', 'PTT Public Co., Ltd.', '฿33.25', '-0.75%', 'ปานกลาง (ระดับ 3)', 'Thai Stock')" class="tap-active p-3.5 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-center justify-between cursor-pointer hover:border-brand-blue">
+              <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-slate-100 text-brand-navy font-black text-xs flex items-center justify-center border border-slate-200">PTT</div>
+                <div>
+                  <h4 class="font-bold text-xs text-brand-navy">PTT Public Co.</h4>
+                  <span class="text-[10px] text-slate-400 font-num">2,400 หุ้น • เฉลี่ย ฿31.50</span>
+                </div>
+              </div>
+              <div class="text-right font-num">
+                <div class="text-xs font-extrabold text-slate-800">฿79,800.00</div>
+                <div class="text-[10px] font-bold text-brand-green">▲ +฿4,200 (+5.5%)</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Real Transactions -->
+          <div class="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs space-y-2.5"><div class="flex justify-between items-center mb-1"><h3 class="text-xs font-bold text-brand-navy">รายการธุรกรรมล่าสุด</h3><span class="text-[10px] font-semibold text-slate-400 font-num">3 รายการ</span></div><div class="space-y-2 text-xs divide-y divide-slate-100"><div class="flex justify-between items-center pt-1.5"><div class="flex items-center space-x-2.5"><span class="px-2 py-0.5 min-w-[32px] h-6 rounded-md bg-blue-100 text-brand-blue flex items-center justify-center text-[11px] font-bold shrink-0">ซื้อ</span><div><div class="font-bold text-slate-800">SPY • SPDR S&amp;P 500</div><span class="text-[10px] text-slate-400 font-num">12 เม.ย. • บัญชีตัดอัตโนมัติ</span></div></div><span class="font-bold font-num text-rose-600">-฿18,200.00</span></div><div class="flex justify-between items-center pt-2"><div class="flex items-center space-x-2.5"><span class="px-2 py-0.5 min-w-[32px] h-6 rounded-md bg-blue-100 text-brand-blue flex items-center justify-center text-[11px] font-bold shrink-0">ซื้อ</span><div><span class="text-[10px] text-slate-400 font-num">08 เม.ย. • ตลาดหลักทรัพย์ US</span></div></div><span class="font-bold font-num text-rose-600">-฿7,400.00</span></div><div class="flex justify-between items-center pt-2"><div class="flex items-center space-x-2.5"><span class="px-2 py-0.5 min-w-[32px] h-6 rounded-md bg-green-100 text-brand-green flex items-center justify-center text-[11px] font-bold shrink-0">ปันผล</span><div><div class="font-bold text-slate-800">PTT • เงินปันผล</div><span class="text-[10px] text-slate-400 font-num">01 เม.ย. • PTT SET50</span></div></div><span class="font-bold font-num text-brand-green">+฿1,420.00</span></div></div></div>
+
+        </div>
+
+        <!-- Sticky Bottom CTA -->
+        
+      </section>
